@@ -1,0 +1,13 @@
+<Solution>
+  <Folder Name="/src/">
+    <Project Path="src/DocumentQnA.API/DocumentQnA.API.csproj" />
+    <Project Path="src/DocumentQnA.Application/DocumentQnA.Application.csproj" />
+    <Project Path="src/DocumentQnA.Contracts/DocumentQnA.Contracts.csproj" />
+    <Project Path="src/DocumentQnA.Domain/DocumentQnA.Domain.csproj" />
+    <Project Path="src/DocumentQnA.Infrastructure/DocumentQnA.Infrastructure.csproj" />
+  </Folder>
+  <Folder Name="/tests/">
+    <Project Path="tests/DocumentQnA.IntegrationTests/DocumentQnA.IntegrationTests.csproj" />
+    <Project Path="tests/DocumentQnA.UnitTests/DocumentQnA.UnitTests.csproj" />
+  </Folder>
+</Solution>
