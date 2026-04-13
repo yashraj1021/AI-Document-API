@@ -1,0 +1,12 @@
+SQL:
+SQL data reader
+Parameterized queries to prevent SQL injections
+
+Used  MVVM
+View:
+Used WPF for UI development
+Used User Control to segregate different Tabs
+
+Good Proficiency with OOPS with all the 4 pillars 
+Used SonarQube for code quality analysis 
+worked with JSON 

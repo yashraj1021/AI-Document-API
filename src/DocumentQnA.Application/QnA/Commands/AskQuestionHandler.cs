@@ -63,7 +63,9 @@ public class AskQuestionHandler : IRequestHandler<AskQuestionCommand, AskQuestio
             TokensUsed = tokensUsed,
             RelevantChunks = relevantResults.Select(r => new DocumentChunkResponse
             {
+                Id = r.VectorId,
                 Content = r.Payload["content"],
+                ChunkIndex = int.Parse(r.Payload["chunkIndex"])
             }).ToList()
         };
     }
