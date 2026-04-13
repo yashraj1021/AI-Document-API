@@ -35,12 +35,13 @@ public class OllamaLlmService : ILlmService
 
         var result = await response.Content.ReadFromJsonAsync<OllamaGenerateResponse>(cancellationToken: cancellationToken);
 
-        return (result?.Response ?? string.Empty, result?.EvalCount ?? 0);
+        return (result?.Response ?? string.Empty, (result?.EvalCount ?? 0) + (result?.PromptEvalCount ?? 0));
     }
 
     private class OllamaGenerateResponse
     {
         public string Response { get; set; } = string.Empty;
-        public int EvalCount { get; set; }
+        public int EvalCount { get; set; }          // output tokens
+        public int PromptEvalCount { get; set; }    // input tokens
     }
 }

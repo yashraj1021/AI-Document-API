@@ -21,7 +21,8 @@ public class DocumentsController : ControllerBase
     private string UserId => User.FindFirst(System.Security.Claims.ClaimTypes.NameIdentifier)?.Value ?? string.Empty;
 
     [HttpPost("upload")]
-    public async Task<IActionResult> Upload(IFormFile file, CancellationToken cancellationToken)
+    [RequestSizeLimit(50 * 1024 * 1024)] // 50MB limit
+    public async Task<IActionResult> Upload([FromForm] IFormFile file, CancellationToken cancellationToken)
     {
         if (file is null || file.Length == 0)
             return BadRequest(new { error = "No file provided." });

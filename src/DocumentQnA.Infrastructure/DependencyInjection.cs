@@ -16,8 +16,8 @@ public static class DependencyInjection
     public static IServiceCollection AddInfrastructure(this IServiceCollection services, IConfiguration configuration)
     {
         // PostgreSQL + EF Core
-        services.AddDbContext<AppDbContext>(options =>
-            options.UseNpgsql(configuration.GetConnectionString("Default")));
+        services.AddDbContextFactory<AppDbContext>(options =>
+        options.UseNpgsql(configuration.GetConnectionString("Default")));
 
         // Repositories
         services.AddScoped<IDocumentRepository, DocumentRepository>();

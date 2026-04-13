@@ -41,9 +41,14 @@ public class UploadDocumentHandler : IRequestHandler<UploadDocumentCommand, Docu
 
         await _documentRepository.AddAsync(document, cancellationToken);
 
-        // 3. Trigger background processing (chunking + embedding)
-        await _processingService.ProcessAsync(document.Id, cancellationToken);
+        // 3. Trigger processing in background — fire and forget
+        // Use Task.Run so it runs AFTER the current request completes
+        _ = Task.Run(async () =>
+        {
+            await _processingService.ProcessAsync(document.Id, CancellationToken.None);
+        });
 
+        // 4. Return immediately with Pending status
         return new DocumentResponse
         {
             Id = document.Id,

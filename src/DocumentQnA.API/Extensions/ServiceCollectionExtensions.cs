@@ -8,22 +8,13 @@ public static class ServiceCollectionExtensions
 {
     public static IServiceCollection AddApplicationServices(this IServiceCollection services)
     {
-        // MediatR
         services.AddMediatR(cfg =>
             cfg.RegisterServicesFromAssembly(typeof(Application.Documents.Commands.UploadDocumentCommand).Assembly));
 
-        // FluentValidation
         services.AddValidatorsFromAssembly(typeof(Application.Documents.Commands.UploadDocumentCommand).Assembly);
 
-        // Validation pipeline behavior
         services.AddTransient(typeof(IPipelineBehavior<,>), typeof(ValidationBehavior<,>));
 
-        return services;
-    }
-
-    public static IServiceCollection AddSwagger(this IServiceCollection services)
-    {
-        services.AddOpenApi();
         return services;
     }
 
