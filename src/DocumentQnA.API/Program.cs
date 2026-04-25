@@ -23,6 +23,10 @@ using (var scope = app.Services.CreateScope())
 app.UseMiddleware<ExceptionHandlingMiddleware>();
 app.UseMiddleware<RequestLoggingMiddleware>();
 
+app.UseDefaultFiles();   // ← ADD THIS (maps "/" to "index.html")
+app.UseStaticFiles();    // ← serves wwwroot content
+
+app.UseRouting();
 app.UseAuthentication();
 app.UseAuthorization();
 
